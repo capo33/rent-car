@@ -1,5 +1,5 @@
 // insert dommy data
-const cars = [
+const carsData = [
   {
     name: "Toyota",
     image:
@@ -164,3 +164,5 @@ const cars = [
     rentPerHour: "100",
   },
 ];
+
+export default carsData;

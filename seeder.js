@@ -1,7 +1,8 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 
-import Car from "./data/Cars.js";
+import CarData from "./data/Cars.js";
+import Car from "./models/Car.js";
 import connectDB from "./config/db.js";
 
 // load env variables
@@ -14,7 +15,7 @@ const importData = async () => {
   try {
     await Car.deleteMany();
 
-    const sampleCars = Car.map((car) => {
+    const sampleCars = CarData.map((car) => {
       return { ...car };
     });
 
