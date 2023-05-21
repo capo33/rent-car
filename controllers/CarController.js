@@ -6,7 +6,7 @@ import CarModel from "../models/Car.js";
 const getCars = async (req, res) => {
   try {
     const cars = await CarModel.find({});
-    console.log('cars', cars);
+    console.log("cars", cars);
     res.status(200).json(cars);
   } catch (error) {
     res.status(404).json({ message: error.message });
@@ -29,11 +29,14 @@ const getCarById = async (req, res) => {
 // @route   POST /api/cars
 // @access  Private
 const createCar = async (req, res) => {
-  const car = req.body;
-  const newCar = new CarModel(car);
   try {
+    const newCar = new CarModel(req.body);
     await newCar.save();
-    res.status(201).json(newCar);
+    res.status(201).json({
+      success: true,
+      data: newCar,
+      message: "Car created successfully",
+    });
   } catch (error) {
     res.status(409).json({ message: error.message });
   }

@@ -6,6 +6,6 @@ import * as bookingController from "../controllers/BookingControllers.js";
 const router = express.Router();
 
 router.post("/", bookingController.bookCar);
-router.get("/", bookingController.getBookings);
+router.get("/",  bookingController.getBookings);
 
 export default router;

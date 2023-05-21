@@ -73,7 +73,7 @@ const bookCar = async (req, res) => {
 // @access  Private
 const getBookings = async (req, res) => {
   try {
-    const bookings = await BookingModel.find({ user: req.user._id });
+    const bookings = await BookingModel.find( ).populate("car");
 
     res.status(200).json({
       success: true,
