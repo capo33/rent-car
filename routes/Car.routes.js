@@ -7,7 +7,7 @@ const router = express.Router();
 router.get("/", carController.getCars);
 router.get("/:id", carController.getCarById);
 router.put("/:id", carController.updateCar);
+router.delete("/:id", carController.deleteCar);
 router.post("/", carController.createCar);
-
 
 export default router;

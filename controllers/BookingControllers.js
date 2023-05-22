@@ -12,7 +12,6 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
 // @desc    Book a car
 // @route   POST /api/v1/bookings
 // @access  Private
-
 const bookCar = async (req, res) => {
   const { token } = req.body;
   console.log("req.body", req.body);

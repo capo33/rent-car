@@ -41,6 +41,7 @@ const register = async (req, res) => {
         _id: newUser._id,
         name: newUser.name,
         email: newUser.email,
+        isAdmin: newUser.isAdmin,
       } ,
       token,
     });
@@ -63,7 +64,7 @@ const login = async (req, res) => {
     // Check if user already exists
     const existingUser = await UserModel.findOne({ email });
     if (!existingUser)
-      return res.status(404).json({ message: "Invalid credentials" });
+      return res.status(404).json({ message: "User doesn't exist" });
 
     // Check if password is correct
     const isPasswordCorrect = await bcrypt.compare(

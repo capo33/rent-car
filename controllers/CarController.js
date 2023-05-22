@@ -5,7 +5,7 @@ import CarModel from "../models/Car.js";
 // @access  Public
 const getCars = async (req, res) => {
   try {
-    const cars = await CarModel.find({});
+    const cars = await CarModel.find({}).sort({ _id: -1 });
     console.log("cars", cars);
     res.status(200).json(cars);
   } catch (error) {
@@ -56,4 +56,19 @@ const createCar = async (req, res) => {
   }
 };
 
-export { getCars, getCarById, updateCar, createCar };
+// @desc    Delete a car
+// @route   DELETE /api/cars/:id
+// @access  Private
+const deleteCar = async (req, res) => {
+  try {
+    const car = await CarModel.findById(req.params.id);
+    if (car) {
+      await car.deleteOne();
+      res.status(200).json({ message: "Car deleted successfully" });
+    }
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
+export { getCars, getCarById, updateCar, createCar, deleteCar };
