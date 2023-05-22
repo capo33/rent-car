@@ -25,6 +25,20 @@ const getCarById = async (req, res) => {
   }
 };
 
+// @desc    Update a car
+// @route   PUT /api/cars/:id
+// @access  Private
+const updateCar = async (req, res) => {
+  try {
+    const car = await CarModel.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+    res.status(200).json(car);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
 // @desc    Create a car
 // @route   POST /api/cars
 // @access  Private
@@ -42,4 +56,4 @@ const createCar = async (req, res) => {
   }
 };
 
-export { getCars, getCarById, createCar };
+export { getCars, getCarById, updateCar, createCar };

@@ -6,6 +6,7 @@ const router = express.Router();
 
 router.get("/", carController.getCars);
 router.get("/:id", carController.getCarById);
+router.put("/:id", carController.updateCar);
 router.post("/", carController.createCar);
 
 
