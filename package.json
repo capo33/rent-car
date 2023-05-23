@@ -6,9 +6,7 @@
   "author": "mohamed",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon index.js",
-    "data:import": "node seeder.js",
-    "data:destroy": "node seeder.js -d"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
