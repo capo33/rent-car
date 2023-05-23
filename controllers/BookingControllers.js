@@ -84,4 +84,33 @@ const getBookings = async (req, res) => {
   }
 };
 
-export { bookCar, getBookings };
+// @desc    Delete a booking
+// @route   DELETE /api/v1/bookings/:id
+// @access  Private
+const deleteBooking = async (req, res) => {
+  try {
+    const booking = await BookingModel.findById(req.params.id);
+
+    if (!booking) {
+      return res.status(404).json({
+        success: false,
+        message: "Booking not found",
+      });
+    }
+
+    await booking.deleteOne();
+
+    res.status(200).json({
+      success: true,
+      message: "Booking deleted successfully",
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+
+export { bookCar, getBookings, deleteBooking };
