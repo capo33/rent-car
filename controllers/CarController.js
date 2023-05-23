@@ -6,7 +6,6 @@ import CarModel from "../models/Car.js";
 const getCars = async (req, res) => {
   try {
     const cars = await CarModel.find({}).sort({ _id: -1 });
-    console.log("cars", cars);
     res.status(200).json(cars);
   } catch (error) {
     res.status(404).json({ message: error.message });

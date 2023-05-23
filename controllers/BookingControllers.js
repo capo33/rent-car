@@ -14,8 +14,6 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
 // @access  Private
 const bookCar = async (req, res) => {
   const { token } = req.body;
-  console.log("req.body", req.body);
-  console.log("token", token);
   try {
     const customer = await stripe.customers.create({
       email: token.email,
@@ -72,7 +70,7 @@ const bookCar = async (req, res) => {
 // @access  Private
 const getBookings = async (req, res) => {
   try {
-    const bookings = await BookingModel.find( ).populate("car");
+    const bookings = await BookingModel.find().populate("car");
 
     res.status(200).json({
       success: true,
@@ -86,4 +84,4 @@ const getBookings = async (req, res) => {
   }
 };
 
-export { bookCar , getBookings};
+export { bookCar, getBookings };

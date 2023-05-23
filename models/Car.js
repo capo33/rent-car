@@ -20,6 +20,14 @@ const CarSchema = new Schema(
       type: "String",
       required: true,
     },
+    model: {
+      type: "String",
+      required: true,
+    },
+    gearType: {
+      type: "String",
+      default: "Automatic",
+    },
     bookedTimeSlots: [
       {
         from: {
